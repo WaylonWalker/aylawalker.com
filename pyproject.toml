@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aylawalker"
+
+description = "Ayla Walker dot com"
+
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"
+
+
+# authors = [
+#   { name = "Ayla Walker", email = "" },
+# ]
+
+
+dependencies = ['markata~=0.9.1']
+dynamic = ["version"]
+
+[tool.hatch.version]
+path = "aylawalker/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "pyinstrument",
+]
+
+[tool.hatch.envs.default.scripts]
+clean = "markata clean"
+build = "markata build"
+tui = "markata tui"
+serve = "python -m http.server 8000 --directory=markout"
+clean-build = ['clean', 'build',]
+clean-tui = ['clean', 'build', 'tui']
